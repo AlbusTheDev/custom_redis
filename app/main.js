@@ -6,7 +6,7 @@ console.log("Logs from your program will appear here!");
 const server = net.createServer((connection) => {
   // Handle connection
   connection.on('data', (data) => {
-    console.log("qusai", data);
+    console.log("qusai", data.toString());
     //connection.write(messages);
   });
 });
