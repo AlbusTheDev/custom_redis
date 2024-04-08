@@ -6,7 +6,8 @@ console.log("Logs from your program will appear here!");
 const server = net.createServer((connection, messages) => {
   // Handle connection
   connection.on('data', (data) => {
-    connection.write(messages.join('\r\n'));
+    console.log(messages);
+    connection.write(messages);
   });
 });
 
