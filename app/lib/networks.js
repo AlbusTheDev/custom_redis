@@ -10,6 +10,7 @@ const createConnection = (host, port) => {
     });
 
     socket.on("data", (data) => {
+        console.log(data.toString());
         if (data.toString().toLowerCase() == "pong"){
             sendMsg(socket, ["*", "REPLCONF", "listening-port", "6380"]);
             sendMsg(socket, ["*", "REPLCONF", "capa", "psync2"]);
