@@ -34,7 +34,7 @@ const formatMsg = (args) => {
         }
     }
 
-    return formattedArgs.join("\r\n");
+    return formattedArgs.join("\r\n") + "\r\n";
 };
 
 const sendMsg = (connection, args) => {
