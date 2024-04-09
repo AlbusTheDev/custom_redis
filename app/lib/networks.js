@@ -9,10 +9,12 @@ const createConnection = (host, port) => {
         sendMsg(socket, ["*", "ping"]);
     });
 
-    socket.on("data", () => {
-        sendMsg(socket, ["*", "REPLCONF", "listening-port", "6380"]);
-        sendMsg(socket, ["*", "REPLCONF", "capa", "psync2"]);
-        sendMsg(socket, ["*", "PSYNC", "?", "-1"]);
+    socket.on("data", (data) => {
+        if (data.toString().toLowerCase() == "pong"){
+            sendMsg(socket, ["*", "REPLCONF", "listening-port", "6380"]);
+            sendMsg(socket, ["*", "REPLCONF", "capa", "psync2"]);
+            sendMsg(socket, ["*", "PSYNC", "?", "-1"]);
+        }
     });
 
     socket.on("error", (error) => {
