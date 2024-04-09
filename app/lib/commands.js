@@ -1,7 +1,7 @@
 var {cache} = require("./cache");
 
 const get = (key) => {
-    if (key in cache) return cache[key];
+    if (key in cache) return [cache[key]];
     else return [];
 }
 
