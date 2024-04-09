@@ -1,7 +1,7 @@
 const {parseData, sendMsg} = require("./utils");
 const {get, set} = require("./commands");
 
-const queryMan = (connection, data, obj) => {
+const queryMan = (connection, data) => {
     const {nParams, command, query} = parseData(data);
 
     switch (command.toLowerCase()) {
@@ -12,10 +12,10 @@ const queryMan = (connection, data, obj) => {
             sendMsg(connection, ["+PONG"]);
             break;
         case "get":
-            sendMsg(connection, get(obj, query[1]));
+            sendMsg(connection, get(query[1]));
             break;
         case "set":
-            sendMsg(connection, set(obj, query));
+            sendMsg(connection, set(query));
             break;
         case "info":
             sendMsg(connection, ["role:master"]);

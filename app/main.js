@@ -8,7 +8,7 @@ const server = net.createServer((connection) => {
     let obj = {};
   // Handle connection
     connection.on('data', (data) => {
-        queryMan(connection, data.toString(), obj);
+        queryMan(connection, data.toString());
     });
 });
 
