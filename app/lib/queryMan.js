@@ -26,6 +26,8 @@ const queryMan = (connection, data) => {
             break;
         case "psync":
             sendMsg(connection, psync());
+            const base64 = "UkVESVMwMDEx+glyZWRpcy12ZXIFNy4yLjD6CnJlZGlzLWJpdHPAQPoFY3RpbWXCbQi8ZfoIdXNlZC1tZW3CsMQQAPoIYW9mLWJhc2XAAP/wbjv+wP9aog=="
+            connection.write(`$${base64.length}\r\n${base64}`)
             break;
     }
 };
