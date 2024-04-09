@@ -18,6 +18,7 @@ const queryMan = (connection, data) => {
             sendMsg(connection, set(query));
             break;
         case "info":
+            console.log(info())
             sendMsg(connection, info());
             break;
     }
