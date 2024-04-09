@@ -25,4 +25,8 @@ const info = () => {
     + `\nmaster_repl_offset:${mainInfo.master_repl_offset}`];
 }
 
+// const replconf = (query) => {
+    
+// }
+
 module.exports = {get, set, info}

@@ -21,6 +21,9 @@ const queryMan = (connection, data) => {
             console.log(info())
             sendMsg(connection, info());
             break;
+        case "replconf":
+            sendMsg(connection, ["+OK"]);
+            break;
     }
 };
 
