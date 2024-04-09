@@ -1,11 +1,8 @@
 var {cache} = require("./cache");
 
 const get = (key) => {
-    const item = cache[key];
-    if (item.start == 0 || (Date.now() - item.start) < item.px)
-        return item.msg;
-    else 
-       return []; 
+    if (key in cache) return cache[key];
+    else return [];
 }
 
 const set = (query) => {
