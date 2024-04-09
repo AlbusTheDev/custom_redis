@@ -12,4 +12,7 @@ const server = net.createServer((connection) => {
     });
 });
 
-server.listen(6379, "127.0.0.1");
+if (process.argv.length === 2)
+    server.listen(6379, "127.0.0.1");
+else 
+    server.listen(process.argv[3], "127.0.0.1");
