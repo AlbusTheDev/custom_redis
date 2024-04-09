@@ -1,5 +1,5 @@
 const {parseData, sendMsg} = require("./utils");
-const {get, set, info} = require("./commands");
+const {get, set, info, psync} = require("./commands");
 
 const queryMan = (connection, data) => {
     const {nParams, command, query} = parseData(data);
@@ -23,6 +23,9 @@ const queryMan = (connection, data) => {
             break;
         case "replconf":
             sendMsg(connection, ["+OK"]);
+            break;
+        case "psync":
+            sendMsg(connection, psync());
             break;
     }
 };

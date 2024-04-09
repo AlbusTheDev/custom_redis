@@ -25,8 +25,8 @@ const info = () => {
     + `\nmaster_repl_offset:${mainInfo.master_repl_offset}`];
 }
 
-// const replconf = (query) => {
-    
-// }
+const psync = () => {
+    return [`+FULLRESYNC ${mainInfo.master_replid} 0`];
+}
 
-module.exports = {get, set, info}
+module.exports = {get, set, info, psync}
