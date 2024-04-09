@@ -17,13 +17,15 @@ const parseData = (data) => {
 const formatMsg = (args) => {
     if (args.length == 0) return "$-1\r\n";
 
-    var formattedArgs = [""];
+    var formattedArgs = [];
 
     for (let i = 0; i < args.length; i++) {
         const element = args[i];
         
         if (element[0] == "+") {
             formattedArgs.push(element)
+        } else if (element[0] == "*") {
+            formattedArgs.push(`*${args.length - 1}`);
         } else if (element[0] != "$") {
             formattedArgs.push("$" + element.length.toString());
             formattedArgs.push(element);
@@ -33,8 +35,6 @@ const formatMsg = (args) => {
             i++;
         }
     }
-
-    formattedArgs[0] = `*${formattedArgs.length - 1}`;
 
     return formattedArgs.join("\r\n") + "\r\n";
 };

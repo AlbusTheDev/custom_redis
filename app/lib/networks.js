@@ -6,7 +6,7 @@ const createConnection = (host, port) => {
     socket.connect(port,host);
 
     socket.on("connect", () => {
-        sendMsg(socket, ["ping"]);
+        sendMsg(socket, ["*", "ping"]);
     });
 
     socket.on("error", (error) => {
