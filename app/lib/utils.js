@@ -34,7 +34,7 @@ const formatMsg = (args) => {
         }
     }
 
-    formattedArgs[0] = `*${formattedArgs.length}`;
+    formattedArgs[0] = `*${formattedArgs.length - 1}`;
 
     return formattedArgs.join("\r\n") + "\r\n";
 };
