@@ -21,8 +21,8 @@ const set = (query) => {
 };
 
 const info = () => {
-    return [`role:${mainInfo.role}`, `master_replid:${mainInfo.master_replid}`
-    ,`master_repl_offset:${mainInfo.master_repl_offset}`];
+    return [`role:${mainInfo.role}\nmaster_replid:${mainInfo.master_replid}`
+    + `\nmaster_repl_offset:${mainInfo.master_repl_offset}`];
 }
 
 module.exports = {get, set, info}
