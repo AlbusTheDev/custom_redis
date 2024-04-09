@@ -9,6 +9,11 @@ const createConnection = (host, port) => {
         sendMsg(socket, ["*", "ping"]);
     });
 
+    socket.on("data", () => {
+        sendMsg(socket, ["*", "REPLCONF", "listening-port", "6380"]);
+        sendMsg(socket, ["*", "REPLCONF", "capa", "psync2"]);
+    });
+
     socket.on("error", (error) => {
         console.log("Error occurred: ", error);
     });
