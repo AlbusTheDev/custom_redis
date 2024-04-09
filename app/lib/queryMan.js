@@ -1,28 +1,24 @@
-const {parseData} = require("../parser/parseData");
-const {ping} = require("../command/ping");
-const {echo} = require("../command/echo");
-const {get} = require("../command/get");
-const {set} = require("../command/set");
-const {info} = require("../command/info");
+const {parseData, sendMsg} = require("./utils");
+const {get, set} = require("./commands");
 
 const queryMan = (connection, data, obj) => {
     const {nParams, command, query} = parseData(data);
 
     switch (command.toLowerCase()) {
         case "echo":
-            echo(connection, query);
+            sendMsg(connection, query);
             break;
         case "ping":
-            ping(connection);
+            sendMsg(connection, ["+PONG"]);
             break;
         case "get":
-            get(connection, obj, query[1]);
+            sendMsg(connection, get(obj, query[1]));
             break;
         case "set":
-            set(connection, obj, query);
+            sendMsg(connection, set(obj, query));
             break;
         case "info":
-            info(connection);
+            sendMsg(connection, ["role:master"]);
             break;
     }
 };
