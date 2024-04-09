@@ -12,6 +12,7 @@ const createConnection = (host, port) => {
     socket.on("data", (data) => {
         console.log(data.toString());
         if (data.toString().startsWith("+PONG")){
+            //?
             sendMsg(socket, ["*", "REPLCONF", "listening-port", "6380"]);
             sendMsg(socket, ["*", "REPLCONF", "capa", "psync2"]);
             sendMsg(socket, ["*", "PSYNC", "?", "-1"]);
