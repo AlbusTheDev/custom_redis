@@ -21,7 +21,8 @@ const set = (query) => {
 };
 
 const info = () => {
-    return [(mainInfo.isReplica ? "role:slave" : "role:master")];
+    return [`role:${mainInfo.role}`, `master_replid:${mainInfo.master_replid}`
+    ,`master_repl_offset:${mainInfo.master_replid}`];
 }
 
 module.exports = {get, set, info}
