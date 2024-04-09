@@ -1,5 +1,5 @@
 const {parseData, sendMsg} = require("./utils");
-const {get, set} = require("./commands");
+const {get, set, info} = require("./commands");
 
 const queryMan = (connection, data) => {
     const {nParams, command, query} = parseData(data);
@@ -18,7 +18,7 @@ const queryMan = (connection, data) => {
             sendMsg(connection, set(query));
             break;
         case "info":
-            sendMsg(connection, ["role:master"]);
+            sendMsg(connection, info());
             break;
     }
 };

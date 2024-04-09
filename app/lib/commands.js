@@ -1,4 +1,5 @@
 var {cache} = require("./cache");
+var {mainInfo} = require("./mainInfo");
 
 const get = (key) => {
     if (key in cache) return [cache[key]];
@@ -19,4 +20,8 @@ const set = (query) => {
     return ["+OK"];
 };
 
-module.exports = {get, set}
+const info = () => {
+    return [(mainInfo.isReplica ? "role:slave" : "role:master")];
+}
+
+module.exports = {get, set, info}
