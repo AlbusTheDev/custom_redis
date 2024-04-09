@@ -18,6 +18,6 @@ if (process.argv.length <= 2)
 else {
     server.listen(process.argv[3], "127.0.0.1");
     if (process.argv.length === 7 && process.argv[4] == "--replicaof") {
-        mainInfo.isReplica = true;
+        mainInfo.role = "slave";
     }
 }
