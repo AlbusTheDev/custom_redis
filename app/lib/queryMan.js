@@ -1,6 +1,7 @@
 const {parseData, sendMsg} = require("./utils");
 const {get, set, info, psync} = require("./commands");
 const {replicas} = require("./replicas");
+const { mainInfo } = require("./mainInfo");
 
 const queryMan = (connection, data) => {
     const {nParams, command, query} = parseData(data);
@@ -17,10 +18,9 @@ const queryMan = (connection, data) => {
             break;
         case "set":
             sendMsg(connection, set(query));
-            replicas.forEach(element => {
-                console.log("for each")
-                sendMsg(element, ["*","SET", ...query]);
-            });
+            if (mainInfo.role=="master") replicas.forEach((rep) => {
+                sendMsg(rep, query);
+            })
             break;
         case "info":
             console.log(info())
@@ -35,6 +35,7 @@ const queryMan = (connection, data) => {
             const rdbBuffer = Buffer.from(base64, "base64");
             const rdbHead = Buffer.from(`$${rdbBuffer.length}\r\n`)
             connection.write(Buffer.concat([rdbHead, rdbBuffer]));
+
             replicas.push(connection);
             break;
     }
