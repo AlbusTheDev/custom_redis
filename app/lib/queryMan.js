@@ -17,7 +17,9 @@ const queryMan = (connection, data) => {
             sendMsg(connection, get(query[1]));
             break;
         case "set":
+            console.log(query);
             sendMsg(connection, set(query));
+
             if (mainInfo.role=="master") {
                 replicas.forEach((rep) => {
                     sendMsg(rep, ["*", "SET", query[1], query[3]]);
