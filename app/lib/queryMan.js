@@ -22,7 +22,7 @@ const queryMan = (connection, data) => {
                 replicas.forEach((rep) => {
                     sendMsg(rep, ["*", "SET", query[1], query[3]]);
                 });
-            } else set(query);
+            }
             break;
         case "info":
             sendMsg(connection, info());
