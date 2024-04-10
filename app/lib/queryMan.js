@@ -18,6 +18,7 @@ const queryMan = (connection, data) => {
         case "set":
             sendMsg(connection, set(query));
             replicas.forEach(element => {
+                console.log("for each")
                 sendMsg(element, ["*","SET", ...query]);
             });
             break;
@@ -34,7 +35,7 @@ const queryMan = (connection, data) => {
             const rdbBuffer = Buffer.from(base64, "base64");
             const rdbHead = Buffer.from(`$${rdbBuffer.length}\r\n`)
             connection.write(Buffer.concat([rdbHead, rdbBuffer]));
-            if(!replicas.includes(connection)) replicas.push(connection);
+            replicas.push(connection);
             break;
     }
 };
