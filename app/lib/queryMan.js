@@ -5,6 +5,7 @@ const { mainInfo } = require("./mainInfo");
 
 const queryMan = (connection, data) => {
     const {nParams, command, query} = parseData(data);
+    console.log([command,...query]);
 
     switch (command.toLowerCase()) {
         case "echo":
@@ -17,7 +18,7 @@ const queryMan = (connection, data) => {
             sendMsg(connection, get(query[1]));
             break;
         case "set":
-            console.log(query);
+            
             sendMsg(connection, set(query));
 
             if (mainInfo.role=="master") {
