@@ -26,7 +26,6 @@ const queryMan = (connection, data) => {
             } else set(query);
             break;
         case "info":
-            console.log(info())
             sendMsg(connection, info());
             break;
         case "replconf":
