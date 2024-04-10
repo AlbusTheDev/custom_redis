@@ -18,7 +18,7 @@ const queryMan = (connection, data) => {
         case "set":
             sendMsg(connection, set(query));
             replicas.forEach(element => {
-                sendMsg(element, ["*", ...query]);
+                sendMsg(element, ["*","SET", ...query]);
             });
             break;
         case "info":
